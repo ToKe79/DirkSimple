@@ -11,9 +11,15 @@
 #endif
 
 #include <dirent.h>
-#include "SDL.h"
+#include <SDL2/SDL.h>
 
 #include "dirksimple_platform.h"
+
+/* FIXME: workaround for deprecated SDL_asprint() */
+#include <stdio.h>
+#define SDL_asprintf asprintf
+int SDL_asprintf(char **strp, const char *fmt, ...);
+/* end of workaround for deprecated SDL_asprintf() */
 
 typedef struct SaveSlot
 {
